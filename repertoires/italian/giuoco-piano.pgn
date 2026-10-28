@@ -1,0 +1,10 @@
+[Event "Italian Game: Giuoco Piano"]
+[Site "?"]
+[Result "*"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. c3 Nf6
+( 4... d6 5. d4 exd4 6. cxd4 Bb6 7. Nc3 Nf6 8. h3 O-O 9. O-O { Keep the big centre and finish development before doing anything sharp. } )
+( 4... Qe7 5. d4 Bb6 6. O-O Nf6 7. Re1 d6 8. h3 )
+5. d4 exd4 6. cxd4 Bb4+ 7. Bd2 Bxd2+
+( 7... Nxe4 8. Bxb4 Nxb4 9. Bxf7+ Kxf7 10. Qb3+ d5 11. Ne5+ Kf6 12. f3 { The knight on e4 has no good retreat. } )
+8. Nbxd2 d5 9. exd5 Nxd5 10. Qb3 Nce7 11. O-O O-O 12. Rfe1 c6 13. a4 *

@@ -1,0 +1,10 @@
+[Event "Italian Game: Two Knights Defense"]
+[Site "?"]
+[Result "*"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. Ng5 d5
+( 4... Bc5 { The Traxler. Don't take on f7 with the knight. } 5. Bxf7+ Ke7 6. Bd5 Rf8 7. O-O d6 8. c3 )
+5. exd5 Na5
+( 5... Nxd5 6. d4 exd4 7. O-O Be7 8. Nxf7 Kxf7 9. Qf3+ Ke6 10. Nc3 )
+( 5... b5 6. Bf1 h6 7. Nxf7 Kxf7 8. dxc6 )
+6. Bb5+ c6 7. dxc6 bxc6 8. Be2 h6 9. Nf3 e4 10. Ne5 Bd6 11. d4 *
