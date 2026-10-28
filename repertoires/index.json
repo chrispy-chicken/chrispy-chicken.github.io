@@ -1,0 +1,21 @@
+{
+  "repertoires": [
+    {
+      "name": "Italian Game",
+      "color": "white",
+      "chapters": [
+        { "name": "Giuoco Piano", "pgn": "italian/giuoco-piano.pgn" },
+        { "name": "Two Knights Defense", "pgn": "italian/two-knights.pgn" }
+      ]
+    },
+    {
+      "name": "Caro-Kann",
+      "color": "black",
+      "chapters": [
+        { "name": "Advance Variation", "pgn": "caro-kann/advance.pgn" },
+        { "name": "Classical", "pgn": "caro-kann/classical.pgn" },
+        { "name": "Exchange and Panov", "pgn": "caro-kann/exchange.pgn" }
+      ]
+    }
+  ]
+}
