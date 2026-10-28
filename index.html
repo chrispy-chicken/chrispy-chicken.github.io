@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1E4639" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1D3830" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Repertoire">
+  <meta name="format-detection" content="telephone=no">
+  <title>Repertoire</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="preload" href="fonts/spectral-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="vendor/chessground.base.css">
+  <link rel="stylesheet" href="vendor/chessground.cburnett.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- Chapter list -->
+    <section id="home" class="view">
+      <header class="topbar home-top">
+        <div class="home-titles">
+          <h1>Repertoire</h1>
+          <p id="overall" class="overall"></p>
+        </div>
+        <button id="open-settings" class="icon-btn on-felt" type="button" aria-label="Settings">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="17" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        </button>
+      </header>
+
+      <main id="rep-list" class="rep-list" aria-live="polite"></main>
+
+      <footer class="actionbar home-bar">
+        <div id="selection-row" class="selection-row" hidden>
+          <span id="selection-note"></span>
+          <button id="clear-selection" class="text-btn" type="button">Clear</button>
+        </div>
+        <div class="bar-buttons">
+          <button id="btn-weak" class="btn secondary" type="button">Weak lines</button>
+          <button id="btn-practice" class="btn primary" type="button">Practice all</button>
+        </div>
+      </footer>
+    </section>
+
+    <!-- Practice -->
+    <section id="practice" class="view" hidden>
+      <header class="topbar practice-top">
+        <button id="btn-back" class="icon-btn on-felt" type="button" aria-label="Back to chapters">
+          <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="practice-titles">
+          <h2 id="p-title"></h2>
+          <p id="p-sub"></p>
+        </div>
+        <div id="p-tally" class="tally" aria-live="polite"></div>
+      </header>
+
+      <div class="practice-body">
+        <div class="board-area">
+          <div id="board"></div>
+        </div>
+
+        <div class="panel">
+          <div class="status-row">
+            <p id="p-status" class="status" aria-live="assertive"></p>
+            <span id="p-progress" class="progress" aria-hidden="true"></span>
+          </div>
+          <p id="p-comment" class="comment"></p>
+          <p id="p-moves" class="moves"></p>
+        </div>
+      </div>
+
+      <footer class="actionbar practice-bar">
+        <div class="bar-buttons">
+          <button id="btn-left" class="btn secondary" type="button">Show move</button>
+          <button id="btn-right" class="btn secondary" type="button">Skip line</button>
+        </div>
+      </footer>
+    </section>
+
+    <!-- Settings -->
+    <dialog id="settings" class="sheet" aria-labelledby="settings-title">
+      <div class="sheet-head">
+        <h2 id="settings-title">Settings</h2>
+        <button id="close-settings" class="text-btn strong" type="button">Done</button>
+      </div>
+
+      <div class="sheet-body">
+        <section class="group">
+          <label class="toggle">
+            <span>Go to the next line automatically after a clean line</span>
+            <input type="checkbox" id="set-auto" role="switch">
+          </label>
+          <label class="toggle">
+            <span>Sounds</span>
+            <input type="checkbox" id="set-sound" role="switch">
+          </label>
+        </section>
+
+        <section class="group">
+          <h3>Back up progress</h3>
+          <p class="hint">Your scores live only on this device. Copy this text and keep it somewhere safe, like a note.</p>
+          <textarea id="backup-out" class="code" rows="3" readonly spellcheck="false"></textarea>
+          <button id="copy-backup" class="btn secondary block" type="button">Copy backup</button>
+        </section>
+
+        <section class="group">
+          <h3>Restore progress</h3>
+          <p class="hint">Paste a backup. For each line, whichever copy has more attempts is kept, so newer progress on this device isn’t lost.</p>
+          <textarea id="backup-in" class="code" rows="3" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="REPTRAIN1:…"></textarea>
+          <button id="restore-backup" class="btn secondary block" type="button">Restore</button>
+          <p id="restore-msg" class="hint" role="status"></p>
+        </section>
+
+        <section class="group">
+          <h3>Repertoire files</h3>
+          <p class="hint">Edited a PGN or <code>index.json</code>? Reload to pick up the changes.</p>
+          <button id="reload-files" class="btn secondary block" type="button">Reload files</button>
+        </section>
+
+        <section class="group">
+          <h3>About weak lines</h3>
+          <p class="hint" id="weak-explainer"></p>
+        </section>
+
+        <section class="group">
+          <button id="reset-progress" class="btn danger block" type="button">Erase all progress</button>
+        </section>
+      </div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" hidden></div>
+  </div>
+</body>
+</html>
